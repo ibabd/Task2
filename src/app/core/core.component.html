@@ -1,0 +1,35 @@
+<hr>
+<div class="container">
+    <div class="card">
+<input placeholder="Enter Your userName" type="text" class="form-control" [(ngModel)]="Username">
+<p class="margen">This is the  {{Username}}  of you</p>
+
+</div>
+<br>
+@if(Username.length>0){
+<button [disabled]="AllowAddUsername" class="btn btn-primary"  (click)="onCreateUsername()">
+    Add Username
+</button>
+}@else{
+    <button [disabled]="!AllowAddUsername" class="btn btn-primary" >
+        Add Username
+    </button>
+}
+
+<br>
+<br>
+
+<button class="btn btn-primary" (click)="onAddContent()">Display Details</button>
+<br>
+<p *ngIf="AllowAddContent"  class="margen">{{anyContent}}</p>
+<br>
+<ul>
+    <li *ngFor="let item of ListItems;let i=index">
+        @if(i<5){
+         <p class="margin" [ngStyle]="itemListStyle">{{i+1}} = {{anyContent}}</p>
+        }@else{
+            <p class="margin" [ngClass]="paragraphStyleClass" >{{i+1}} = {{anyContent}}</p>
+        }
+    </li>
+</ul>
+</div>
